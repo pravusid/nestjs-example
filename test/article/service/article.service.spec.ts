@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppModule } from '../../src/app.module';
-import { PostService } from '../../src/service/post.service';
+import { AppModule } from '../../../src/app.module';
+import { ArticleService } from '../../../src/article/service/article.service';
 
-describe('PostService', () => {
-  let service: PostService;
+describe('ArticleService', () => {
+  let service: ArticleService;
 
   beforeEach(async () => {
     const modRef: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
-    service = modRef.get(PostService);
+    service = modRef.get(ArticleService);
   });
 
   it('test getHello', () => {
