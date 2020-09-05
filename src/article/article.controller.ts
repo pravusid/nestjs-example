@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { ArticleService } from './article.service';
 import { Article } from './domain/article';
-import { ArticleService } from './service/article.service';
 
 @Controller()
 export class ArticleController {
@@ -12,8 +12,8 @@ export class ArticleController {
   }
 
   @Get(':id')
-  getArticle(@Param('id') id: number): Promise<Article> {
-    return this.articleService.getArticle(id);
+  getArticle(@Param('id') id: string): Promise<Article> {
+    return this.articleService.getArticle(Number(id));
   }
 
   @Post()
