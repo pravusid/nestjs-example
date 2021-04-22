@@ -7,29 +7,16 @@
     "node": true
   },
   "extends": [
-    "airbnb-base",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "class-methods-use-this": "off",
-    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "no-empty-function": "off",
-    "no-return-await": "off",
-    "no-undef": "off",
-    "no-useless-constructor": "off",
-    "require-await": "off",
-    "import/extensions": "off",
-    "import/no-unresolved": "off",
-    "import/prefer-default-export": "off",
-    "@typescript-eslint/await-thenable": "warn",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
-    "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/no-useless-constructor": "error",
-    "@typescript-eslint/require-await": "warn",
-    "@typescript-eslint/return-await": ["warn", "in-try-catch"]
+    "@typescript-eslint/no-empty-function": ["error", { "allow": ["private-constructors", "protected-constructors"] }],
+    "@typescript-eslint/no-namespace": "off"
   },
   "overrides": [
     {
@@ -41,13 +28,7 @@
         "jest": true
       },
       "plugins": ["jest"],
-      "rules": {
-        "dot-notation": "off",
-        "global-require": "off",
-        "import/no-extraneous-dependencies": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "@typescript-eslint/no-var-requires": "off"
-      }
+      "rules": {}
     }
   ]
 }
