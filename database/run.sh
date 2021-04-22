@@ -2,6 +2,7 @@
 
 docker run \
   --detach \
+  -v "$(pwd)"/init/:/docker-entrypoint-initdb.d/ \
   --env MYSQL_ROOT_PASSWORD=1234 \
   --env MYSQL_USER=nestex \
   --env MYSQL_PASSWORD=1234 \
