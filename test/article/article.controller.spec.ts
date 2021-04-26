@@ -1,21 +1,23 @@
-import { INestApplication } from '@nestjs/common';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../../src/app.module';
 
-describe('ArticleController (e2e)', () => {
-  let app: INestApplication;
+describe('ArticleController', () => {
+  let app: NestFastifyApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
-    app = moduleFixture.createNestApplication();
-    await app.init();
+    const adapter = new FastifyAdapter({ logger: true });
+    app = await moduleFixture.createNestApplication<NestFastifyApplication>(adapter).init();
+    // https://github.com/fastify/help/issues/228
+    await adapter.getInstance().ready();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer()).get('/').expect(200).expect('Hello World!');
+  it('GET /hello', () => {
+    return request(app.getHttpServer()).get('/hello').expect(200).expect('Hello World!');
   });
 });
