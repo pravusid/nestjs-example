@@ -7,7 +7,7 @@ export class Prisma extends PrismaClient implements OnModuleInit, OnModuleDestro
     return this.$connect();
   }
 
-  onModuleDestroy(): Promise<any> {
+  onModuleDestroy(): Promise<unknown> {
     return this.$disconnect();
   }
 }
